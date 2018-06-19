@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 
@@ -13,7 +13,7 @@ export class TokenComponent implements OnInit {
   constructor(
     private route: ActivatedRoute
   ) { }
-
+  @Input() token = ''
   ngOnInit() {
     this.route.params.subscribe(res=>{
       console.log(res)

@@ -1,24 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { tokens } from "../common/token";
-import { ActivatedRoute } from '@angular/router';
+import { tokens } from '../common/token';
+import { HttpClient } from '@angular/common/http';
+
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  selector: 'app-main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.css'],
   providers: [HttpClient]
 })
-export class HomeComponent implements OnInit {
+export class MainComponent implements OnInit {
+
   loading = false
   shortenLink = ''
-  token = ''
   constructor(
-    private http: HttpClient,
-    private route: ActivatedRoute
+    private http: HttpClient
   ) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(res => this.token = res.token)
   }
 
   getToken() {
@@ -36,6 +34,7 @@ export class HomeComponent implements OnInit {
       this.loading = false
     })
   }
+  
   getHost() {
     var protocol = location.protocol;
     var slashes = protocol.concat("//");

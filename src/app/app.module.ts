@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { TokenComponent } from './token/token.component';
 import { LoadingComponent } from './core/loading/loading.component';
+import { MainComponent } from './main/main.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { LoadingComponent } from './core/loading/loading.component';
     AppComponent,
     HomeComponent,
     TokenComponent,
-    LoadingComponent
+    LoadingComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
