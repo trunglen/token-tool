@@ -7,13 +7,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { TokenComponent } from './token/token.component';
+import { LoadingComponent } from './core/loading/loading.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    TokenComponent
+    TokenComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,7 @@ import { tokens } from "../common/token";
   providers: [HttpClient]
 })
 export class HomeComponent implements OnInit {
-
+  loading =false
   shortenLink = ''
   constructor(
     private http: HttpClient
@@ -20,14 +20,20 @@ export class HomeComponent implements OnInit {
   getToken() {
     const index = Number.parseInt(Math.random() * tokens.length + '')
     const token = tokens[index]
-    const tokenLink = this.getHost() + '/token/' + token
+    const tokenLink = 'http://token.mart24h.com' + '/#/token/' + token
     console.log(tokenLink)
+    this.loading = true
     const shortenRequestLink = `http://163.44.206.108:3010/shortenLink?url=${tokenLink}`
     let header = new HttpHeaders()
     header.set('Access-Control-Allow-Origin', '*')
-    this.http.get(shortenRequestLink, { headers: {'Access-Control-Allow-Origin':'*'} }).subscribe((res: any) => {
+    this.http.get(shortenRequestLink).subscribe((res: any) => {
       console.log(res)
-      this.shortenLink = res;
+      this.shortenLink = res.shortenedUrl;
+    },err=>{
+      console.log(err)
+      this.loading = false
+    },()=>{
+      this.loading = false
     })
   }
   getHost() {
